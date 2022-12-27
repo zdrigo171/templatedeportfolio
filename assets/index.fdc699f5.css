@@ -363,7 +363,7 @@ video {
 }
 
 .i-octicon-mail {
-    --un-icon: url("https://i.pinimg.com/originals/cd/41/00/cd41006a8dca91e0b68085d394b7dac9.png");
+    --un-icon: url("https://img.icons8.com/ios-glyphs/512/roblox.png");
     mask: var(--un-icon) no-repeat;
     mask-size: 100% 100%;
     -webkit-mask: var(--un-icon) no-repeat;
